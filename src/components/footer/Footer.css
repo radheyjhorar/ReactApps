@@ -1,0 +1,21 @@
+.social-links {
+  background-color: blue;
+  color: white;
+  display: flex;
+  height: 3rem;
+  align-items: center;
+}
+
+.social-link-message {
+  margin-left: 0.4rem;
+}
+
+.social-link-icons {
+  position: absolute;
+  right: 0.4rem;
+}
+
+.social-link-icons > * {
+  margin: 0 0.2rem;
+}
+
