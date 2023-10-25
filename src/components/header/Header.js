@@ -64,14 +64,14 @@ const Header = () => {
   }));
 
   return (
-    <div>
+    <div style={{display: 'block', clear:'both', }}>
       <AppBar>
         <Toolbar>
           <Box>
             <FitbitIcon fontSize="large" sx={{ marginLeft: 4 }} />
           </Box>
           <Tabs sx={{ marginX: "auto" }} textColor="#fff">
-            <Tab label="Products1" />
+            <Tab label="Products" />
             <Tab label="Services" />
             <Tab label="ContactUS" />
             <Tab label="About Us" />

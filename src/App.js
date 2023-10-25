@@ -1,12 +1,14 @@
 import React from "react";
 import "./App.css";
 import Header from './components/header/Header';
+import BannerSlider from "./components/banner-slider/BannerSlider";
+import ProductSlider from "./components/categories-product-slider/ProductSlider";
 
 
 function App() {
   return (
-    <div className="App">
-        <Header />
+    <div>
+       <Header />
     </div>
   );
 }
