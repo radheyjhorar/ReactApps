@@ -1,5 +1,15 @@
-import React from "react";
-import { AppBar, Box, Button, Tab, Tabs, Toolbar } from "@mui/material";
+import React, { useState } from "react";
+import {
+  AppBar,
+  Box,
+  Button,
+  Tab,
+  Tabs,
+  Toolbar,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
+import { useTheme } from "@mui/material";
 import Badge from "@mui/material/Badge";
 import { styled, alpha } from "@mui/material/styles";
 import FitbitIcon from "@mui/icons-material/Fitbit";
@@ -9,6 +19,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 import Avatar from "@mui/material/Avatar";
 import Navbar from "./Navbar/Navbar";
+import SideDrawer from "../drawer/SideDrawer";
+import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 
 const Header = () => {
   const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -63,33 +75,64 @@ const Header = () => {
     },
   }));
 
+  const [value, setValue] = useState();
+
+  const theme = useTheme();
+
+  const isMatchMedium = useMediaQuery(theme.breakpoints.down("md"));
+
+  const PAGES = ["Products", "Services", "ContactUS", "About Us"];
+
   return (
-    <div style={{display: 'block', clear:'both', }}>
+    <div style={{ display: "block", clear: "both" }}>
       <AppBar>
         <Toolbar>
-          <Box>
-            <FitbitIcon fontSize="large" sx={{ marginLeft: 4 }} />
-          </Box>
-          <Tabs sx={{ marginX: "auto" }} textColor="#fff">
-            <Tab label="Products" />
-            <Tab label="Services" />
-            <Tab label="ContactUS" />
-            <Tab label="About Us" />
-          </Tabs>
-          <Box>
-            <Search>
-              <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper>
-              <StyledInputBase
-                placeholder="Search…"
-                inputProps={{ "aria-label": "search" }}
-              />
-            </Search>
-          </Box>
+          {isMatchMedium ? (
+            <>
+              <Box display={"flex"} alignItems="center">
+                <ShoppingCartCheckoutIcon fontSize="large" />
+                <Typography variant="h6" component="h1" ml={1}>
+                  ShopiFy
+                </Typography>
+              </Box>
+              <Box marginLeft={"auto"}>
+                <SideDrawer />
+              </Box>
+            </>
+          ) : (
+            <>
+              <Box display={"flex"} alignItems="center">
+                <ShoppingCartCheckoutIcon fontSize="large" />
+                <Typography variant="h6" component="h1" ml={1}>
+                  ShopiFy
+                </Typography>
+              </Box>
+              <Box sx={{ marginX: "auto" }}>
+                <Tabs
+                  value={value}
+                  onChange={(e, value) => setValue(value)}
+                  textColor="#fff"
+                  TabIndicatorProps={{ style: { background: "white" } }}
+                >
+                  {PAGES.map((page, index) => (
+                    <Tab label={page} key={index} />
+                  ))}
+                </Tabs>
+              </Box>
+              <Box>
+                <Search>
+                  <SearchIconWrapper>
+                    <SearchIcon />
+                  </SearchIconWrapper>
+                  <StyledInputBase
+                    placeholder="Search…"
+                    inputProps={{ "aria-label": "search" }}
+                  />
+                </Search>
+              </Box>
 
-          {/* If user SignIn */}
-          {/* <Box sx={{ marginX: 3 }}>
+              {/* If user SignIn */}
+              {/* <Box sx={{ marginX: 3 }}>
             <IconButton aria-label="cart">
               <StyledBadge badgeContent={4} sx={{ color: "#fff" }}>
                 <ShoppingCartIcon fontSize="large"/>
@@ -100,13 +143,19 @@ const Header = () => {
             <Avatar src="/broken-image.jpg" />
           </Box> */}
 
-          {/* If user signUp */}
-          <Box mx={2}>
-            <Button sx={{marginX: 2}} color="secondary" variant="contained">Login</Button>
-            <Button variant="contained" color="secondary">Signup</Button>
-          </Box>
+              {/* If user signUp */}
+              <Box mx={1}>
+                <Button
+                  sx={{ marginX: 1 }}
+                  color="secondary"
+                  variant="contained"
+                >
+                  Login/Signup
+                </Button>
+              </Box>
+            </>
+          )}
         </Toolbar>
-        <Navbar />
       </AppBar>
     </div>
   );

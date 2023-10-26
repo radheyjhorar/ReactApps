@@ -4,10 +4,15 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 
 function Navbar() {
+  const [value, setValue] = React.useState();
   return (
     <div>
       <Box sx={{ backgroundColor: "#FFF", color: "#000" }} px={4}>
-        <Tabs textColor="#fff" value={0} sx={{ indicatorColor: "red" }}>
+        <Tabs
+          textColor="#fff"
+          value={value}
+          onChange={(e, value) => setValue(value)}
+        >
           <Tab label="Item1" />
           <Tab label="Item2" />
           <Tab label="Item3" />
