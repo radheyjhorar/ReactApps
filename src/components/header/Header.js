@@ -21,6 +21,8 @@ import Avatar from "@mui/material/Avatar";
 import Navbar from "./Navbar/Navbar";
 import SideDrawer from "../drawer/SideDrawer";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
+import Modal from '@mui/material/Modal';
+import SignIn from "../sign-in/SignIn";
 
 const Header = () => {
   const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -83,6 +85,21 @@ const Header = () => {
 
   const PAGES = ["Products", "Services", "ContactUS", "About Us"];
 
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 'auto',
+    bgcolor: 'background.paper',
+    boxShadow: 24,
+    p: 4,
+  };
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <div style={{ display: "block", clear: "both" }}>
       <AppBar>
@@ -119,16 +136,18 @@ const Header = () => {
                   ))}
                 </Tabs>
               </Box>
-              <Box>
+              <Box sx={{width: '10%'}} >
+              <Box sx={{width: 'fit-content', float: 'right'}}>
                 <Search>
                   <SearchIconWrapper>
                     <SearchIcon />
                   </SearchIconWrapper>
                   <StyledInputBase
                     placeholder="Search…"
-                    inputProps={{ "aria-label": "search" }}
+                    inputProps={{ "aria-label": "search", width: '0ch'}}      
                   />
                 </Search>
+              </Box>
               </Box>
 
               {/* If user SignIn */}
@@ -146,9 +165,11 @@ const Header = () => {
               {/* If user signUp */}
               <Box mx={1}>
                 <Button
+                  id="signInSignUpButton"
                   sx={{ marginX: 1 }}
                   color="secondary"
                   variant="contained"
+                  onClick={handleOpen}
                 >
                   Login/Signup
                 </Button>
@@ -157,6 +178,18 @@ const Header = () => {
           )}
         </Toolbar>
       </AppBar>
+
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <SignIn/>
+        </Box>
+      </Modal>
+
     </div>
   );
 };
