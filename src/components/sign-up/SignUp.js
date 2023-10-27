@@ -26,8 +26,6 @@ function Copyright(props) {
   );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
-
 const defaultTheme = createTheme();
 
 export default function SignUp() {
@@ -131,76 +129,3 @@ export default function SignUp() {
     </ThemeProvider>
   );
 }
-
-
-
-
-
-
-
-
-//My Code
-// import React from "react";
-// import './SignUp.css';
-// import { TextField, Button, Grid } from "@mui/material";
-// import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
-// import GoogleIcon from '@mui/icons-material/Google';
-// import LinkedInIcon from '@mui/icons-material/LinkedIn';
-// import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
-// import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
-// import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-
-
-// function SignUp() {
-//     return (
-//         <Grid container spacing={2} className="signup-page">
-//             <Grid item xl={4} lg={4} md={4} sm={4} xs={12} className="sign-in-banner">
-//                 <div className="sign-in-container">
-//                     <div>
-//                         <h6>Welcome Back!</h6>
-//                         <p>To keep connected with us please<br/>login with your personal info</p>
-//                         <Button className="sign-in-button" variant="contained">Sign In</Button>
-//                     </div>
-//                 </div>
-//             </Grid>
-
-//             <Grid item xl={8} lg={8} md={8} sm={8} xs={12}>
-//                 <div className="signup-container">
-//                     <form>
-//                         <h1>Create Account</h1>
-//                         <div className="social-icons-to-signup">
-//                             <FacebookRoundedIcon className="facebook-icon" />
-//                             <GoogleIcon className="google-icon"/>
-//                             <LinkedInIcon className="linkedin-icon" />
-//                         </div>
-//                         <p>or use your email for registration:</p>
-//                         <div className="signup-input-fields">
-//                             <div>
-//                                 <PersonAddAltOutlinedIcon className="name-input-icon"/>
-//                                 <TextField id="standard-basic"  className="name-input" label="Name" variant="standard" />
-//                             </div>
-//                             <br/>
-//                             <br/>
-//                             <div>
-//                                 <EmailOutlinedIcon className="email-input-icon"/>
-//                                 <TextField className="email-input" id="standard-basic" type="email" label="Email" variant="standard" />
-//                             </div>
-//                             <br />
-//                             <br />
-//                             <div>
-//                                 <LockOutlinedIcon className="password-input-icon"/>
-//                                 <TextField className="password-input" id="standard-basic" type="password" label="Password" variant="standard" />
-//                             </div>
-//                             <br/>
-//                             <br/>
-//                         </div>
-//                         <br />
-//                         <Button variant="contained" className="signup-button">Sign Up</Button>
-//                     </form>
-//                 </div>
-//             </Grid>
-//         </Grid>
-//     )
-// }
-
-// export default SignUp;

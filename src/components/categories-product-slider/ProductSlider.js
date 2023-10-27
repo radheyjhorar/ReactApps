@@ -1,20 +1,22 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import Product from "./Product";
+import productData from './Products.json';
+import './products.css';
 
 const ProductSlider = () => {
   const responsive = {
     superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5,
+      breakpoint: { max: 1600, min: 1024 },
+      items: 4,
     },
     desktop: {
-      breakpoint: { max: 3000, min: 1024 },
+      breakpoint: { max: 1024, min: 800 },
       items: 3,
     },
     tablet: {
-      breakpoint: { max: 1024, min: 464 },
+      breakpoint: { max: 800, min: 464 },
       items: 2,
     },
     mobile: {
@@ -23,13 +25,14 @@ const ProductSlider = () => {
     },
   };
 
+  const products = productData.map(item => (
+    <Product product={item} />
+  ))
+
   return (
-    <div>
+    <div style={{margin: '2rem'}}>
       <Carousel responsive={responsive}>
-        <div>Item 1</div>
-        <div>Item 2</div>
-        <div>Item 3</div>
-        <div>Item 4</div>
+          {products}
       </Carousel>
     </div>
   );

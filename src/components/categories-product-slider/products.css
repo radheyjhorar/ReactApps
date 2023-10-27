@@ -1,0 +1,6 @@
+/* ProductSlider.js */
+
+.react-multi-carousel-item {
+  width: auto !important;
+  margin-left: 12px;
+}

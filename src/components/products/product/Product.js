@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Product = ({ product }) => (
+const Product = () => (
   <div>
-    <h3>{product.name}</h3>
-    <p>{product.description}</p>
-    <p>${product.price}</p>
+    <h3>{Product.name}</h3>
+    <p>{Product.description}</p>
+    <p>${Product.price}</p>
     <button>Add to Cart</button>
   </div>
 );

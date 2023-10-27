@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   AppBar,
   Box,
@@ -23,8 +23,10 @@ import SideDrawer from "../drawer/SideDrawer";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import Modal from '@mui/material/Modal';
 import SignIn from "../sign-in/SignIn";
+import BannerSlider from "../banner-slider/BannerSlider";
+import CloseIcon from '@mui/icons-material/Close';
 
-const Header = () => {
+const Header = (props) => {
   const StyledBadge = styled(Badge)(({ theme }) => ({
     "& .MuiBadge-badge": {
       right: -2,
@@ -100,9 +102,16 @@ const Header = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+
+  const [height, setHeight] = useState(0);
+  const ref = useRef(null);
+  useEffect(() => {
+    setHeight(ref.current.clientHeight);
+  });
+
   return (
     <div style={{ display: "block", clear: "both" }}>
-      <AppBar>
+      <AppBar ref={ref}>
         <Toolbar>
           {isMatchMedium ? (
             <>
@@ -182,14 +191,16 @@ const Header = () => {
       <Modal
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          <IconButton onClick={handleClose} sx={{float: 'right'}}>
+            <CloseIcon color="primary"/>
+          </IconButton>
           <SignIn/>
         </Box>
       </Modal>
-
+      <Navbar headerHeight={height}/>
+      <BannerSlider />
     </div>
   );
 };
