@@ -1,76 +1,155 @@
-import React from 'react';
-import { Box, Button, Divider, Grid, TextField, Typography } from '@mui/material';
-import AppleIcon from '@mui/icons-material/Apple';
+import React from "react";
+import {
+  Box,
+  Button,
+  Divider,
+  Grid,
+  TextField,
+  Typography,
+  FormGroup,
+  FormControlLabel,
+  Checkbox,
+} from "@mui/material";
+import AppleIcon from "@mui/icons-material/Apple";
 
 const Checkout = () => {
   return (
-    <div style={{marginBottom: '20rem'}}>
-      <Grid container mt={8}>
-        <Grid width='49vw'>
+    <div style={{ marginBottom: "20rem" }}>
+      <Grid container mt={8} justifyContent='center'>
+        <Grid width="40vw">
           <Box>
             <h1>Page 1</h1>
           </Box>
         </Grid>
-        <Grid width='49vw'>
-          <Box textAlign='center'>
+        <Grid width="40vw">
+          <Box textAlign="center">
             <Button
-              variant='contained'
-              sx={{color: 'white',
-                  width: '70%',
-                  alignItems: 'center',
-
-              }}
-              >
-                <AppleIcon /><Typography ml={1} variant='subtitle1' component='p'> Pay </Typography> 
+              variant="contained"
+              sx={{ color: "white", width: "70%", alignItems: "center" }}
+            >
+              <AppleIcon />
+              <Typography ml={1} variant="subtitle1" component="p">
+                {" "}
+                Pay{" "}
+              </Typography>
             </Button>
           </Box>
-          <Box sx={{ display: 'flex' }}>
-            <Divider sx={{my:4, width:'70%', marginInline: 'auto'}}>Or pay with card</Divider>
-          </Box> 
-          <Box>
-            <Box width='70%' marginInline='auto'>
-              <Typography variant='h5' component='p' mb={3}>Shipping information</Typography>
-              <TextField
-                sx={{ width: '-webkit-fill-available' }}
-                id="standard-basic"
-                label="Email"
-                variant="standard"
-              />
 
-              <Typography variant='h6' component='p' mt={4} sx={{color: '#7a7a7a'}}>Shipping address</Typography>
+          <Box sx={{ display: "flex" }}>
+            <Divider sx={{ my: 2, width: "70%", marginInline: "auto" }}>
+              Or pay with card
+            </Divider>
+          </Box>
+
+          <Box>
+            <Box width="70%" marginInline="auto">
+              <Typography variant="h6" component="p" mb={1}>
+                Shipping information
+              </Typography>
+
               <TextField
-                sx={{ width: '-webkit-fill-available' }}
-                id="standard-basic"
+                fullWidth
+                id="demo-helper-text-aligned"
+                label="Email"
+                size="small"
+              />
+            </Box>
+
+            <Box width="70%" marginInline="auto" my={2}>
+              <Typography
+                variant="subtitle1"
+                component="p"
+                sx={{ color: "#7a7a7a" }}
+              >
+                Shipping address
+              </Typography>
+
+              <TextField
+                sx={{ my: 1 }}
+                fullWidth
+                id="demo-helper-text-aligned"
                 label="Name"
-                variant="standard"
+                size="small"
               />
               <TextField
-                sx={{ width: '-webkit-fill-available' }}
-                id="standard-basic"
+                fullWidth
+                id="demo-helper-text-aligned"
                 label="Country"
-                variant="standard"
+                size="small"
               />
               <TextField
-                sx={{ width: '-webkit-fill-available' }}
-                id="standard-basic"
+                sx={{ my: 1 }}
+                fullWidth
+                id="demo-helper-text-aligned"
                 label="Address"
-                variant="standard"
+                size="small"
               />
-              <Typography 
-                variant='subtitle2' 
-                component='p' 
-                sx={{color: '#7a7a7a'}}
+              <Typography
+                variant="subtitle"
+                component="p"
+                sx={{ color: "#7a7a7a" }}
               >
                 Enter address manually
               </Typography>
+            </Box>
 
+            <Box width="70%" marginInline="auto" my={2}>
+              <Typography variant="h6" component="p" mb={1}>
+                Payment Details
+              </Typography>
+
+              <Typography
+                variant="subtitle"
+                component="p"
+                sx={{ color: "#7a7a7a" }}
+              >
+                Card Information
+              </Typography>
+
+              <TextField
+                sx={{ my: 1 }}
+                fullWidth
+                id="demo-helper-text-aligned"
+                label="Card Number"
+                size="small"
+              />
+              <Box width="100%">
+                <TextField
+                  sx={{ mb: 1, width: "50%" }}
+                  id="demo-helper-text-aligned"
+                  label="MM / YY"
+                  size="small"
+                />
+                <TextField
+                  sx={{ mb: 1, width: "50%" }}
+                  id="demo-helper-text-aligned"
+                  label="CVC"
+                  size="small"
+                />
+                <FormGroup>
+                  <FormControlLabel
+                    required
+                    control={<Checkbox />}
+                    label="Billing address same as shipping"
+                  />
+                </FormGroup>
+              </Box>
             </Box>
           </Box>
-          
+          <Box textAlign="center">
+            <Button
+              variant="contained"
+              sx={{ color: "white", width: "70%"}}
+            >
+              <Typography ml={1} variant="subtitle1" component="p">
+                Pay $134.00
+              </Typography>
+            </Button>
+          </Box>
         </Grid>
       </Grid>
     </div>
-  )
-}
+  );
+};
 
 export default Checkout;
