@@ -108,8 +108,8 @@ const Header = (props) => {
   });
 
   return (
-    <header>
-    <div style={{ display: "block", clear: "both", height: height }}>
+    <header style={{marginBottom: '1.5rem'}}>
+    <div style={{ display: "block", clear: "both", height: height}}>
       <AppBar ref={ref}>
         <Toolbar>
           {isMatchMedium ? (
