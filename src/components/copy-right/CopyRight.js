@@ -3,14 +3,18 @@ import { Typography, Link } from '@mui/material';
 
 function CopyRight(props) {
   return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="#">
-        ShopiFy
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
+    <div>
+     <Typography variant="subtitle1" align="center" {...props}>
+        {new Date().getFullYear()}
+        {' '}
+        {'Copyright©'}
+        {' '}
+       <Link color="inherit" href="#">
+         ShopiFy
+       </Link>{' '}
+       {'.'}
+     </Typography>
+    </div>
   );
 }
 

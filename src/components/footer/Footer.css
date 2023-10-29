@@ -1,21 +1,5 @@
-.social-links {
-  background-color: blue;
-  color: white;
-  display: flex;
-  height: 3rem;
-  align-items: center;
+footer {
+  position: fixed;
+  bottom: 0;
+  width: -webkit-fill-available;
 }
-
-.social-link-message {
-  margin-left: 0.4rem;
-}
-
-.social-link-icons {
-  position: absolute;
-  right: 0.4rem;
-}
-
-.social-link-icons > * {
-  margin: 0 0.2rem;
-}
-

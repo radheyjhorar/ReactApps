@@ -1,16 +1,21 @@
-import React from "react";
+import React, { BrowserRouter, Routes, Route } from "react";
 import "./App.css";
 import Header from './components/header/Header';
-import ProductSlider from "./components/categories-product-slider/ProductSlider";
-import Checkout from "./components/check-out/Checkout";
+import Footer from "./components/footer/Footer";
+import Checkout from "./components/check-out/CheckOut";
 
 
 function App() {
   return (
     <div>
-      <Header />
-      <ProductSlider />
-      <Checkout />
+    {/* <BrowserRouter> */}
+            <Header />
+            {/* <Routes> */}
+                {/* <Route/> */}
+                <Checkout />
+            {/* </Routes> */}
+            <Footer />
+    {/* </BrowserRouter> */}
     </div>
   );
 }

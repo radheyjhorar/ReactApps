@@ -12,7 +12,6 @@ import {
 import { useTheme } from "@mui/material";
 import Badge from "@mui/material/Badge";
 import { styled, alpha } from "@mui/material/styles";
-import FitbitIcon from "@mui/icons-material/Fitbit";
 import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchIcon from "@mui/icons-material/Search";
@@ -23,7 +22,6 @@ import SideDrawer from "../drawer/SideDrawer";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import Modal from '@mui/material/Modal';
 import SignIn from "../sign-in/SignIn";
-import BannerSlider from "../banner-slider/BannerSlider";
 import CloseIcon from '@mui/icons-material/Close';
 
 const Header = (props) => {
@@ -110,7 +108,8 @@ const Header = (props) => {
   });
 
   return (
-    <div style={{ display: "block", clear: "both" }}>
+    <header>
+    <div style={{ display: "block", clear: "both", height: height }}>
       <AppBar ref={ref}>
         <Toolbar>
           {isMatchMedium ? (
@@ -199,9 +198,9 @@ const Header = (props) => {
           <SignIn/>
         </Box>
       </Modal>
-      <Navbar headerHeight={height}/>
-      <BannerSlider />
+      {/* <Navbar headerHeight={height}/> */}
     </div>
+    </header>
   );
 };
 
