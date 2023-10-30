@@ -1,5 +1,5 @@
-import React from "react";
-import { Box, Button, Grid, Link, TextField } from "@mui/material";
+import React, { useState } from "react";
+import { Box, Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import MuiAccordion from "@mui/material/Accordion";
@@ -7,9 +7,11 @@ import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import GppGoodIcon from "@mui/icons-material/GppGood";
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import StarIcon from '@mui/icons-material/Star';
+
+import LoginFirst from "./LoginCheck.js/LoginFirst";
+import LogedIn from "./LoginCheck.js/LogedIn";
+import PriceDetails from "./PriceDetails/PriceDetails";
+import DeliveryAddress from "./DeliveryAddress/DeliveryAddress";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -24,35 +26,38 @@ const Accordion = styled((props) => (
 }));
 
 const AccordionSummary = styled((props) => (
-  <MuiAccordionSummary
-    expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: "0.9rem" }} />}
-    {...props}
-  />
+  <MuiAccordionSummary {...props} sx={{py: 1}}/>
 ))(({ theme }) => ({
   backgroundColor:
     theme.palette.mode === "dark"
       ? "rgba(255, 255, 255, .05)"
       : "rgba(0, 0, 0, .03)",
-  flexDirection: "row-reverse",
-  "& .MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
-    transform: "rotate(90deg)",
-  },
   "& .MuiAccordionSummary-content": {
     marginLeft: theme.spacing(1),
   },
+  borderBottom: "1px solid rgba(0, 0, 0, .125)",
 }));
 
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
-  borderTop: "1px solid rgba(0, 0, 0, .125)",
+  borderBottom: "1px solid rgba(0, 0, 0, .125)",
 }));
 
+
+
 const Checkout = () => {
+
   const [expanded, setExpanded] = React.useState("panel1");
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
+
+  const [AccoTitle, setAccoTitle] = useState("");
+
+  function AccordionTitle(msg) {
+    setAccoTitle(msg);
+  }
 
   return (
     <div>
@@ -68,94 +73,28 @@ const Checkout = () => {
               expandIcon={null}
               sx={{
                 backgroundColor: "#1976d2",
-                color: "#fff"
+                color: "#fff",
               }}
             >
-              <Box sx={{
-                backgroundColor: "#fff",
-                // backgroundColor: "#d8d8d8b5",
-                width: '20px',
-                height: '20px',
-                textAlign: 'center',
-                borderRadius: '3px',
-                mr: 2,
-              }} 
-              color='#1976d2'>
+              <Box
+                sx={{
+                  backgroundColor: "#fff",
+                  // backgroundColor: "#d8d8d8b5",
+                  width: "20px",
+                  height: "20px",
+                  textAlign: "center",
+                  borderRadius: "3px",
+                  mr: 2,
+                }}
+                color="#1976d2"
+              >
                 1
               </Box>
-              <Typography textTransform="uppercase">
-                Login or Signup
-              </Typography>
+              <Typography textTransform="uppercase">{AccoTitle}</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Grid container pl={6} pt={3} pr={2} pb={1}>
-                <Grid item sm={5}>
-                  <TextField
-                    fullWidth
-                    type="email"
-                    variant="standard"
-                    label="Enter Email/Mobile number"
-                    sx={{ mb: 3 }}
-                  />
-                  <Typography variant="body" component="div" color={"#7a7a7a"}>
-                    By continuing, you agree to our{" "}
-                    <Link underline="none">Terms of use </Link>
-                    and 
-                    <Link underline="none">Privacy Policy. </Link>
-                  </Typography>
-                  <Box>
-                    <Button
-                      fullWidth 
-                      variant="contained" 
-                      sx={{
-                        mt: 3,
-                        py: 2,
-                        fontSize: '1rem'
-                      }}
-                    >
-                      Continue
-                    </Button>
-                  </Box>
-                </Grid>
-                <Grid item sm={5} ml={"auto"}>
-                  <Box>
-                    <Typography
-                    variant="subtitle1"
-                    component={'span'}
-                    color={"#7a7a7a"}
-                  >
-                    Advantages of our secure login
-                  </Typography>
-                  </Box>
-                  <Box display={'flex'} alignItems={'center'} my={1}>
-                    <LocalShippingIcon sx={{mr: 1}} color="primary"/>
-                    <Typography
-                      variant="body"
-                      component={'span'}
-                    >
-                      Easily Track Orders, Hassle free Returns
-                    </Typography>
-                  </Box>
-                  <Box display={'flex'} alignItems={'center'} my={2}>
-                    <NotificationsIcon sx={{mr: 1}} color="primary"/>
-                    <Typography
-                      variant="body"
-                      component={'span'}
-                    >
-                      Get Relevant Alerts and Recommendation
-                    </Typography>
-                  </Box>
-                  <Box display={'flex'} alignItems={'center'} my={1}>
-                    <StarIcon sx={{mr: 1}} color="primary"/>
-                    <Typography
-                      variant="body"
-                      component={'span'}
-                    >
-                      Wishlist, Reviews, Ratings and more.
-                    </Typography>
-                  </Box>
-                </Grid>
-              </Grid>
+              {/* <LoginFirst AccordionTitle={AccordionTitle}/> */}
+              <LogedIn AccordionTitle={AccordionTitle} />
             </AccordionDetails>
           </Accordion>
           <br />
@@ -172,26 +111,27 @@ const Checkout = () => {
               //   color: "#fff"
               // }}
             >
-              <Box sx={{
-                // backgroundColor: "#fff",
-                backgroundColor: "#d8d8d8b5",
-                width: '20px',
-                height: '20px',
-                textAlign: 'center',
-                borderRadius: '3px',
-                mr: 2,
-              }} 
-              color='#1976d2'>
+              <Box
+                sx={{
+                  // backgroundColor: "#fff",
+                  backgroundColor: "#d8d8d8b5",
+                  width: "20px",
+                  height: "20px",
+                  textAlign: "center",
+                  borderRadius: "3px",
+                  mr: 2,
+                }}
+                color="#1976d2"
+              >
                 2
               </Box>
               <Typography textTransform="uppercase">
                 Delivery Address
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails sx={{m: 0, p:0}}>
               <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse
+                <DeliveryAddress/>
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -209,16 +149,18 @@ const Checkout = () => {
               //   color: "#fff"
               // }}
             >
-              <Box sx={{
-                // backgroundColor: "#fff",
-                backgroundColor: "#d8d8d8b5",
-                width: '20px',
-                height: '20px',
-                textAlign: 'center',
-                borderRadius: '3px',
-                mr: 2,
-              }} 
-              color='#1976d2'>
+              <Box
+                sx={{
+                  // backgroundColor: "#fff",
+                  backgroundColor: "#d8d8d8b5",
+                  width: "20px",
+                  height: "20px",
+                  textAlign: "center",
+                  borderRadius: "3px",
+                  mr: 2,
+                }}
+                color="#1976d2"
+              >
                 3
               </Box>
               <Typography textTransform="uppercase">Order Summary</Typography>
@@ -244,16 +186,18 @@ const Checkout = () => {
               //   color: "#fff"
               // }}
             >
-              <Box sx={{
-                // backgroundColor: "#fff",
-                backgroundColor: "#d8d8d8b5",
-                width: '20px',
-                height: '20px',
-                textAlign: 'center',
-                borderRadius: '3px',
-                mr: 2,
-              }} 
-              color='#1976d2'>
+              <Box
+                sx={{
+                  // backgroundColor: "#fff",
+                  backgroundColor: "#d8d8d8b5",
+                  width: "20px",
+                  height: "20px",
+                  textAlign: "center",
+                  borderRadius: "3px",
+                  mr: 2,
+                }}
+                color="#1976d2"
+              >
                 4
               </Box>
               <Typography textTransform="uppercase">Payment Options</Typography>
@@ -266,19 +210,25 @@ const Checkout = () => {
             </AccordionDetails>
           </Accordion>
         </Grid>
-        <Grid item sm={4} py={2} pl={5}>
-          <Box display={"flex"} alignItems={"center"}>
-            <GppGoodIcon sx={{ fontSize: "3rem", color: "grey" }} />
-            <Typography
-              variant="body1"
-              component="span"
-              display={"block"}
-              ml={3}
-              fontWeight={500}
-              lineHeight={"normal"}
-            >
-              Safe and Secure Payments. Easy returns. 100% Aunthentic products.
-            </Typography>
+        <Grid item sm={4} pl={5}>
+          <Box>
+            
+              <PriceDetails />
+
+            <Box display={"flex"} alignItems={"center"} py={2}>
+              <GppGoodIcon sx={{ fontSize: "3rem", color: "grey" }} />
+              <Typography
+                variant="body1"
+                component="span"
+                display={"block"}
+                ml={3}
+                fontWeight={500}
+                lineHeight={"normal"}
+              >
+                Safe and Secure Payments. Easy returns. 100% Aunthentic
+                products.
+              </Typography>
+            </Box>
           </Box>
         </Grid>
       </Grid>
@@ -287,6 +237,8 @@ const Checkout = () => {
 };
 
 export default Checkout;
+
+
 
 /* <Grid container mt={8} justifyContent='center'>
         <Grid width="40vw">
