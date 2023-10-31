@@ -12,6 +12,9 @@ import LoginFirst from "./LoginCheck.js/LoginFirst";
 import LogedIn from "./LoginCheck.js/LogedIn";
 import PriceDetails from "./PriceDetails/PriceDetails";
 import DeliveryAddress from "./DeliveryAddress/DeliveryAddress";
+import OrderSummary from "./OrderSummary/OrderSummary";
+import ConfirmationEmail from "./OrderSummary/ConfirmationEmail";
+import PaymentOptions from "./PaymentOptions/PaymentOptions";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -166,10 +169,10 @@ const Checkout = () => {
               <Typography textTransform="uppercase">Order Summary</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse
-              </Typography>
+              <OrderSummary />
+            </AccordionDetails>
+            <AccordionDetails sx={{mt: 2, borderTop: '1px solid #ddd'}} >
+              <ConfirmationEmail />
             </AccordionDetails>
           </Accordion>
           <br />
@@ -203,10 +206,7 @@ const Checkout = () => {
               <Typography textTransform="uppercase">Payment Options</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse
-              </Typography>
+              <PaymentOptions />
             </AccordionDetails>
           </Accordion>
         </Grid>
