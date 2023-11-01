@@ -12,7 +12,10 @@ import MuiAccordionSummary, {
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import UPI from "../../payment/UPI";
-import PaidIcon from '@mui/icons-material/Paid';
+import PaidIcon from "@mui/icons-material/Paid";
+import WalletIcon from "@mui/icons-material/Wallet";
+import Wallets from "../../payment/Wallets";
+import CardPayment from "../../payment/CardPayment";
 
 const PaymentOptions = () => {
   const [expanded, setExpanded] = React.useState("panel1");
@@ -42,15 +45,19 @@ const PaymentOptions = () => {
                   <FormControlLabel
                     value="firstAcco"
                     control={<Radio />}
-                    label={<Box display={'flex'}>
-                      <Box display={'flex'} alignItems={'center'}>
-                        <PaidIcon/>
+                    sx={{ width: "100%" }}
+                    label={
+                      <Box display={"flex"}>
+                        <Box display={"flex"} alignItems={"center"}>
+                          <PaidIcon />
+                        </Box>
+                        <Box>
+                          <Typography ml={1} variant="h6" component={"span"}>
+                            UPI
+                          </Typography>
+                        </Box>
                       </Box>
-                      <Box>
-                        <Typography ml={1} variant="h6" component={'span'}>UPI</Typography>
-                      </Box>
-                    </Box>}
-                    sx={{width: '100%'}}
+                    }
                   />
                 </MuiAccordionSummary>
                 <MuiAccordionDetails>
@@ -68,18 +75,23 @@ const PaymentOptions = () => {
                   <FormControlLabel
                     value="secondAcco"
                     control={<Radio />}
-                    label="SecondAcco Item #2"
-                    sx={{width: '100%'}}
+                    sx={{ width: "100%" }}
+                    label={
+                      <Box display={"flex"}>
+                        <Box display={"flex"} alignItems={"center"}>
+                          <WalletIcon />
+                        </Box>
+                        <Box>
+                          <Typography ml={1} variant="h6" component={"span"}>
+                            Wallets
+                          </Typography>
+                        </Box>
+                      </Box>
+                    }
                   />
                 </MuiAccordionSummary>
                 <MuiAccordionDetails>
-                  <Typography>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse malesuada lacus ex, sit amet blandit leo
-                    lobortis eget. Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit. Suspendisse malesuada lacus ex, sit amet
-                    blandit leo lobortis eget.
-                  </Typography>
+                  <Wallets />
                 </MuiAccordionDetails>
               </MuiAccordion>
               <MuiAccordion
@@ -93,18 +105,21 @@ const PaymentOptions = () => {
                   <FormControlLabel
                     value="thirdAcco"
                     control={<Radio />}
-                    label="ThirdAcco Item #3"
-                    sx={{width: '100%'}}
+                    sx={{ width: "100%" }}
+                    label={
+                      <Box>
+                        <Typography
+                          variant="h6"
+                          component={"span"}
+                        >
+                          Credit / Debit / ATM Card
+                        </Typography>
+                      </Box>
+                    }
                   />
                 </MuiAccordionSummary>
                 <MuiAccordionDetails>
-                  <Typography>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse malesuada lacus ex, sit amet blandit leo
-                    lobortis eget. Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit. Suspendisse malesuada lacus ex, sit amet
-                    blandit leo lobortis eget.
-                  </Typography>
+                  <CardPayment />
                 </MuiAccordionDetails>
               </MuiAccordion>
             </Box>
