@@ -15,6 +15,9 @@ import DeliveryAddress from "./DeliveryAddress/DeliveryAddress";
 import OrderSummary from "./OrderSummary/OrderSummary";
 import ConfirmationEmail from "./OrderSummary/ConfirmationEmail";
 import PaymentOptions from "./PaymentOptions/PaymentOptions";
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddGiftCard from "./AddGiftCard/AddGiftCard";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -29,7 +32,7 @@ const Accordion = styled((props) => (
 }));
 
 const AccordionSummary = styled((props) => (
-  <MuiAccordionSummary {...props} sx={{py: 1}}/>
+  <MuiAccordionSummary {...props} sx={{ py: 1 }} />
 ))(({ theme }) => ({
   backgroundColor:
     theme.palette.mode === "dark"
@@ -46,10 +49,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderBottom: "1px solid rgba(0, 0, 0, .125)",
 }));
 
-
-
 const Checkout = () => {
-
   const [expanded, setExpanded] = React.useState("panel1");
 
   const handleChange = (panel) => (event, newExpanded) => {
@@ -132,9 +132,9 @@ const Checkout = () => {
                 Delivery Address
               </Typography>
             </AccordionSummary>
-            <AccordionDetails sx={{m: 0, p:0}}>
+            <AccordionDetails sx={{ m: 0, p: 0 }}>
               <Typography>
-                <DeliveryAddress/>
+                <DeliveryAddress />
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -171,7 +171,7 @@ const Checkout = () => {
             <AccordionDetails>
               <OrderSummary />
             </AccordionDetails>
-            <AccordionDetails sx={{mt: 2, borderTop: '1px solid #ddd'}} >
+            <AccordionDetails sx={{ mt: 2, borderTop: "1px solid #ddd" }}>
               <ConfirmationEmail />
             </AccordionDetails>
           </Accordion>
@@ -209,11 +209,45 @@ const Checkout = () => {
               <PaymentOptions />
             </AccordionDetails>
           </Accordion>
+          <br/>
+          <Accordion
+            expanded={expanded === "panel5"}
+            onChange={handleChange("panel5")}
+          >
+            <AccordionSummary
+              aria-controls="panel5d-content"
+              id="panel5d-header"
+              expandIcon={null}
+              // sx={{
+              //   backgroundColor: "#1976d2",
+              //   color: "#fff"
+              // }}
+            >
+              <Box
+                sx={{
+                  // backgroundColor: "#fff",
+                  backgroundColor: "#d8d8d8b5",
+                  width: "20px",
+                  height: "20px",
+                  textAlign: "center",
+                  borderRadius: "3px",
+                  mr: 2,
+                }}
+                color="#1976d2"
+              >
+                {expanded ? <RemoveIcon fontSize="small" /> : <AddIcon fontSize="small" /> }
+              </Box>
+              <Typography textTransform="uppercase">Add Gift Card</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <AddGiftCard />
+            </AccordionDetails>
+          </Accordion>
+
         </Grid>
         <Grid item sm={4} pl={5}>
           <Box>
-            
-              <PriceDetails />
+            <PriceDetails />
 
             <Box display={"flex"} alignItems={"center"} py={2}>
               <GppGoodIcon sx={{ fontSize: "3rem", color: "grey" }} />
@@ -237,8 +271,6 @@ const Checkout = () => {
 };
 
 export default Checkout;
-
-
 
 /* <Grid container mt={8} justifyContent='center'>
         <Grid width="40vw">

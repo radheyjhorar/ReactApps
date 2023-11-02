@@ -1,8 +1,8 @@
 import React from "react";
 import { Box, TextField, Button, Typography } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
-import InputAdornment from '@mui/material/InputAdornment';
-import HelpIcon from '@mui/icons-material/Help';
+import InputAdornment from "@mui/material/InputAdornment";
+import HelpIcon from "@mui/icons-material/Help";
 
 const months = [
   {
@@ -153,7 +153,7 @@ const CardPayment = () => {
               InputProps={{
                 endAdornment: (
                   <InputAdornment>
-                    <HelpIcon sx={{fontSize: '2rem', color: '#aaa'}}/>
+                    <HelpIcon sx={{ fontSize: "2rem", color: "#aaa" }} />
                   </InputAdornment>
                 ),
               }}
@@ -161,10 +161,17 @@ const CardPayment = () => {
           </Box>
         </Box>
         <Box>
-          <Button variant="contained" sx={{py: 1.2, px: 8, fontSize: '1.2rem'}}>Pay $399</Button>
+          <Button
+            variant="contained"
+            sx={{ py: 1.2, px: 8, fontSize: "1.2rem" }}
+          >
+            Pay $399
+          </Button>
         </Box>
         <Box py={3}>
-          <Typography fontSize={'1.2rem'} component={'span'} color={'#999'}>Add and secure your card as per RBI guidlines</Typography>
+          <Typography fontSize={"1.2rem"} component={"span"} color={"#999"}>
+            Add and secure your card as per RBI guidlines
+          </Typography>
         </Box>
       </Box>
     </div>

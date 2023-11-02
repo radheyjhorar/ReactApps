@@ -16,6 +16,9 @@ import PaidIcon from "@mui/icons-material/Paid";
 import WalletIcon from "@mui/icons-material/Wallet";
 import Wallets from "../../payment/Wallets";
 import CardPayment from "../../payment/CardPayment";
+import NetBanking from "../../payment/NetBanking";
+import CashOnDelivery from "../../payment/CashOnDelivery";
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 
 const PaymentOptions = () => {
   const [expanded, setExpanded] = React.useState("panel1");
@@ -122,6 +125,107 @@ const PaymentOptions = () => {
                   <CardPayment />
                 </MuiAccordionDetails>
               </MuiAccordion>
+
+              <MuiAccordion
+                expanded={expanded === "panel4"}
+                onChange={handleChange("panel4")}
+              >
+                <MuiAccordionSummary
+                  aria-controls="panel4d-content"
+                  id="panel4d-header"
+                >
+                  <FormControlLabel
+                    value="fourthAcco"
+                    control={<Radio />}
+                    sx={{ width: "100%" }}
+                    label={
+                      <Box>
+                        <Typography
+                          variant="h6"
+                          component={"span"}
+                        >
+                          Net Banking
+                        </Typography>
+                      </Box>
+                    }
+                  />
+                </MuiAccordionSummary>
+                <MuiAccordionDetails>
+                  <NetBanking />
+                </MuiAccordionDetails>
+              </MuiAccordion>
+
+              <MuiAccordion
+                expanded={expanded === "panel5"}
+                onChange={handleChange("panel5")}
+              >
+                <MuiAccordionSummary
+                  aria-controls="panel5d-content"
+                  id="panel5d-header"
+                >
+                  <FormControlLabel
+                    value="fifthAcco"
+                    control={<Radio />}
+                    sx={{ width: "100%" }}
+                    label={
+                      <Box>
+                        <Typography
+                          variant="h6"
+                          component={"span"}
+                        >
+                          Cash on Delivery
+                        </Typography>
+                      </Box>
+                    }
+                  />
+                </MuiAccordionSummary>
+                <MuiAccordionDetails>
+                  <CashOnDelivery />
+                </MuiAccordionDetails>
+              </MuiAccordion>
+
+              <MuiAccordion
+                // expanded={expanded === "panel6"}
+                // onChange={handleChange("panel6")}
+              >
+                <MuiAccordionSummary
+                  disabled
+                  aria-controls="panel5d-content"
+                  id="panel5d-header"
+                >
+                  <FormControlLabel
+                    value="fifthAcco"
+                    checked={false}
+                    control={<Radio />}
+                    // sx={{ width: "100%" }}
+                    label={
+                      <Box display={'flex'}>
+                        <Typography
+                          variant="h6"
+                          component={"span"}
+                        >
+                          EMI (Easy Installments)
+                        </Typography>
+                        <Box
+                          position={'absolute'}
+                          right={12}
+                          display={'flex'}
+                          alignItems={'center'}
+                        >
+                          <Typography variant="h6">
+                            Not applicable
+                          </Typography>
+                          <HelpOutlineIcon sx={{ml:1}}/>
+                        </Box>
+                        
+                      </Box>
+                    }
+                  />
+                </MuiAccordionSummary>
+                <MuiAccordionDetails>
+                </MuiAccordionDetails>
+              </MuiAccordion>
+
             </Box>
           </RadioGroup>
         </FormControl>
