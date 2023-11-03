@@ -4,7 +4,7 @@ import React from "react";
 const PriceDetails = () => {
   return (
     <div>
-      <Box boxShadow={4} mb={2}>
+      <Box boxShadow={4} >
         <Box py={2} px={3}  >
           <Typography
               textTransform={'uppercase'}

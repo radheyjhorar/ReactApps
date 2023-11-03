@@ -3,16 +3,17 @@ import "./App.css";
 import Header from './components/header/Header';
 import Footer from "./components/footer/Footer";
 import Checkout from "./components/check-out/CheckOut";
+import Cart from "./components/cart/Cart";
 
 
 function App() {
   return (
-    <div>
+    <div className="myApp">
     {/* <BrowserRouter> */}
             <Header />
             {/* <Routes> */}
                 {/* <Route/> */}
-                <Checkout />
+                <Cart />
             {/* </Routes> */}
             <Footer />
     {/* </BrowserRouter> */}
