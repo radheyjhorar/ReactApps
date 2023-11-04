@@ -4,6 +4,7 @@ import Header from './components/header/Header';
 import Footer from "./components/footer/Footer";
 import Checkout from "./components/check-out/CheckOut";
 import Cart from "./components/cart/Cart";
+import UserProfile from "./components/user-profile/UserProfile";
 
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
             <Header />
             {/* <Routes> */}
                 {/* <Route/> */}
-                <Cart />
+                <UserProfile />
             {/* </Routes> */}
             <Footer />
     {/* </BrowserRouter> */}
