@@ -5,6 +5,7 @@ import Footer from "./components/footer/Footer";
 import Checkout from "./components/check-out/CheckOut";
 import Cart from "./components/cart/Cart";
 import UserProfile from "./components/user-profile/UserProfile";
+import SignUp from "./components/sign-up/SignUp";
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
             <Header />
             {/* <Routes> */}
                 {/* <Route/> */}
-                <UserProfile />
+                <SignUp />
             {/* </Routes> */}
             <Footer />
     {/* </BrowserRouter> */}

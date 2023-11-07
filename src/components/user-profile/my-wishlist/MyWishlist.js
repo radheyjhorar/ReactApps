@@ -1,4 +1,4 @@
-import { Box, Divider, Typography } from '@mui/material';
+import { Box, Button, Divider, Typography } from '@mui/material';
 import React from 'react';
 import StarIcon from '@mui/icons-material/Star';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
@@ -30,7 +30,9 @@ const MyWishlist = () => {
         <Box ml={2} width={'100%'}>
           <Box display={'flex'} alignItems={'center'}>
             <Typography fontSize={'1.3rem'} mb={'2px'}>Wodland Loafers For Men</Typography>
-            <DeleteIcon sx={{ml: 'auto', color: '#888'}}/>
+            <Button sx={{ml: 'auto', px: 0}}>
+              <DeleteIcon sx={{color: '#888'}}/>
+            </Button>
           </Box>
           
           <Box

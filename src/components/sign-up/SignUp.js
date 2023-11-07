@@ -12,30 +12,32 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import { useState } from 'react';
 
 const defaultTheme = createTheme();
 
-export default function SignUp() {
+function SignUp() {
+
+  const [formData, setFormData] = useState({
+    firstName: '',
+    secondName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  })
+  console.log(formData.firstName);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
+      firstName: data.get('firstName'),
+      lastName: data.get('lastName'),
       email: data.get('email'),
       password: data.get('password'),
+      allowExtraEmails: data.get('allowExtraEmails'),
     });
+    console.log(event.target[1].value);
   };
 
   return (
@@ -102,7 +104,9 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
+                  control={
+                    <Checkbox name='allowExtraEmails' value="allowExtraEmails" color="primary" />
+                  }
                   label="I want to receive inspiration, marketing promotions and updates via email."
                 />
               </Grid>
@@ -124,8 +128,9 @@ export default function SignUp() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ my: 5 }} />
       </Container>
     </ThemeProvider>
   );
 }
+
+export default SignUp;

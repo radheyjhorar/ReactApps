@@ -93,8 +93,8 @@ const Cart = () => {
                 <Grid container>
                   <Grid item sm={2} p={2} textAlign={"-webkit-center"}>
                     <Box
-                      width={"112px"}
-                      height={"112px"}
+                      width={"110px"}
+                      height={"110px"}
                       display={"flex"}
                       alignItems={"center"}
                     >
