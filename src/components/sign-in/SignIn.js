@@ -13,8 +13,6 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import CopyRight from "../copy-right/CopyRight";
-import ForgotPassword from "../forgot-password/ForgotPassword";
 
 const defaultTheme = createTheme();
 
@@ -85,7 +83,7 @@ function SignIn() {
               >
                 Sign In
               </Button>
-              <Grid container>
+              <Grid container pt={4} pb={2}>
                 <Grid item xs>
                   <Link href='#' variant="body2">
                     Forgot password?
@@ -99,7 +97,6 @@ function SignIn() {
               </Grid>
             </Box>
           </Box>
-          <CopyRight sx={{ mt: 8, mb: 4 }} />
         </Container>
       </ThemeProvider>
     </div>

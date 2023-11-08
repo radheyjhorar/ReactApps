@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
+import './header.css';
 import {
   AppBar,
   Box,
-  Button,
   Tab,
   Tabs,
   Toolbar,
@@ -10,30 +10,15 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { useTheme } from "@mui/material";
-import Badge from "@mui/material/Badge";
 import { styled, alpha } from "@mui/material/styles";
-import IconButton from "@mui/material/IconButton";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
-import Avatar from "@mui/material/Avatar";
 import Navbar from "./Navbar/Navbar";
 import SideDrawer from "../drawer/SideDrawer";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
-import Modal from '@mui/material/Modal';
-import SignIn from "../sign-in/SignIn";
-import CloseIcon from '@mui/icons-material/Close';
+import SignInSignUp from "../sign-in-sign-up/SignInSignUp";
 
 const Header = (props) => {
-  const StyledBadge = styled(Badge)(({ theme }) => ({
-    "& .MuiBadge-badge": {
-      right: -2,
-      top: 1,
-      padding: "0 2px",
-      backgroundColor: "#F84F31",
-      color: "#fff",
-    },
-  }));
 
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
@@ -86,19 +71,15 @@ const Header = (props) => {
   const PAGES = ["Products", "Services", "ContactUS", "About Us"];
 
   const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 'auto',
-    bgcolor: 'background.paper',
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "auto",
+    bgcolor: "background.paper",
     boxShadow: 24,
     p: 4,
   };
-
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
 
   const [height, setHeight] = useState(0);
@@ -108,98 +89,65 @@ const Header = (props) => {
   });
 
   return (
-    <header style={{marginBottom: '1.5rem'}}>
-    <div style={{ display: "block", clear: "both", height: height}}>
-      <AppBar ref={ref}>
-        <Toolbar>
-          {isMatchMedium ? (
-            <>
-              <Box display={"flex"} alignItems="center">
-                <ShoppingCartCheckoutIcon fontSize="large" />
-                <Typography variant="h6" component="h1" ml={1}>
-                  ShopiFy
-                </Typography>
-              </Box>
-              <Box marginLeft={"auto"}>
-                <SideDrawer />
-              </Box>
-            </>
-          ) : (
-            <>
-              <Box display={"flex"} alignItems="center">
-                <ShoppingCartCheckoutIcon fontSize="large" />
-                <Typography variant="h6" component="h1" ml={1}>
-                  ShopiFy
-                </Typography>
-              </Box>
-              <Box sx={{ marginX: "auto" }}>
-                <Tabs
-                  value={value}
-                  onChange={(e, value) => setValue(value)}
-                  textColor="#fff"
-                  TabIndicatorProps={{ style: { background: "white" } }}
-                >
-                  {PAGES.map((page, index) => (
-                    <Tab label={page} key={index} />
-                  ))}
-                </Tabs>
-              </Box>
-              <Box sx={{width: '10%'}} >
-              <Box sx={{width: 'fit-content', float: 'right'}}>
-                <Search>
-                  <SearchIconWrapper>
-                    <SearchIcon />
-                  </SearchIconWrapper>
-                  <StyledInputBase
-                    placeholder="Search…"
-                    inputProps={{ "aria-label": "search", width: '0ch'}}      
-                  />
-                </Search>
-              </Box>
-              </Box>
+    <header>
+      <div style={{ display: "block", clear: "both", height: height }}>
+        <AppBar ref={ref}>
+          <Toolbar>
+            {isMatchMedium ? (
+              <>
+                <Box display={"flex"} alignItems="center">
+                  <ShoppingCartCheckoutIcon fontSize="large" />
+                  <Typography variant="h6" component="h1" ml={1}>
+                    ShopiFy
+                  </Typography>
+                </Box>
+                <Box marginLeft={"auto"}>
+                  <SideDrawer />
+                </Box>
+              </>
+            ) : (
+              <>
+                <Box display={"flex"} alignItems="center">
+                  <ShoppingCartCheckoutIcon fontSize="large" />
+                  <Typography variant="h6" component="h1" ml={1}>
+                    ShopiFy
+                  </Typography>
+                </Box>
+                <Box sx={{ marginX: "auto" }}>
+                  <Tabs
+                    value={value}
+                    onChange={(e, value) => setValue(value)}
+                    textColor="#fff"
+                    TabIndicatorProps={{ style: { background: "white" } }}
+                  >
+                    {PAGES.map((page, index) => (
+                      <Tab label={page} key={index} />
+                    ))}
+                  </Tabs>
+                </Box>
+                <Box sx={{ width: "10%" }}>
+                  <Box sx={{ width: "fit-content", float: "right" }}>
+                    <Search>
+                      <SearchIconWrapper>
+                        <SearchIcon />
+                      </SearchIconWrapper>
+                      <StyledInputBase
+                        placeholder="Search…"
+                        inputProps={{ "aria-label": "search", width: "0ch" }}
+                      />
+                    </Search>
+                  </Box>
+                </Box>
 
-              {/* If user SignIn */}
-              {/* <Box sx={{ marginX: 3 }}>
-            <IconButton aria-label="cart">
-              <StyledBadge badgeContent={4} sx={{ color: "#fff" }}>
-                <ShoppingCartIcon fontSize="large"/>
-              </StyledBadge>
-            </IconButton>
-          </Box>
-          <Box sx={{ marginRight: 3 }}>
-            <Avatar src="/broken-image.jpg" />
-          </Box> */}
-
-              {/* If user signUp */}
-              <Box mx={1}>
-                <Button
-                  id="signInSignUpButton"
-                  sx={{ marginX: 1 }}
-                  color="secondary"
-                  variant="contained"
-                  onClick={handleOpen}
-                >
-                  Login/Signup
-                </Button>
+                <Box mx={1}>
+                <SignInSignUp/>
               </Box>
-            </>
-          )}
-        </Toolbar>
-      </AppBar>
-
-      <Modal
-        open={open}
-        onClose={handleClose}
-      >
-        <Box sx={style}>
-          <IconButton onClick={handleClose} sx={{float: 'right'}}>
-            <CloseIcon color="primary"/>
-          </IconButton>
-          <SignIn/>
-        </Box>
-      </Modal>
-      {/* <Navbar headerHeight={height}/> */}
-    </div>
+              </>
+            )}
+          </Toolbar>
+        </AppBar>
+        <Navbar headerHeight={height}/>
+      </div>
     </header>
   );
 };

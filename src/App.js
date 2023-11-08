@@ -6,6 +6,7 @@ import Checkout from "./components/check-out/CheckOut";
 import Cart from "./components/cart/Cart";
 import UserProfile from "./components/user-profile/UserProfile";
 import SignUp from "./components/sign-up/SignUp";
+import SignInSignUp from "./components/sign-in-sign-up/SignInSignUp";
 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
             <Header />
             {/* <Routes> */}
                 {/* <Route/> */}
-                <SignUp />
+                {/* <SignInSignUp /> */}
             {/* </Routes> */}
             <Footer />
     {/* </BrowserRouter> */}
