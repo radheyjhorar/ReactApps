@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Box, Button } from "@mui/material";
+import { Modal, Box, Button, Grid, Link } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import IconButton from "@mui/material/IconButton";
 import SignIn from "../sign-in/SignIn";
@@ -7,6 +7,7 @@ import { styled } from "@mui/material/styles";
 import Badge from "@mui/material/Badge";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Avatar from "@mui/material/Avatar";
+import SignUp from "../sign-up/SignUp";
 
 const SignInSignUp = () => {
   const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -29,7 +30,7 @@ const SignInSignUp = () => {
     boxShadow: 24,
     px: 2,
     py: 4,
-    borderRadius: '4px',
+    borderRadius: "4px",
   };
 
   const [open, setOpen] = React.useState(false);
@@ -40,45 +41,93 @@ const SignInSignUp = () => {
 
   const Login = (
     <Box display={"flex"} textAlign={"center"}>
-        <Box sx={{ marginX: 3 }}>
-          <IconButton aria-label="cart">
-            <StyledBadge badgeContent={4} sx={{ color: "#fff" }}>
-              <ShoppingCartIcon fontSize="large" />
-            </StyledBadge>
-          </IconButton>
-        </Box>
-        <Box sx={{ marginRight: 3 }}>
-          <Avatar src="/broken-image.jpg" />
-        </Box>
+      <Box sx={{ marginX: 3 }}>
+        <IconButton aria-label="cart">
+          <StyledBadge badgeContent={4} sx={{ color: "#fff" }}>
+            <ShoppingCartIcon fontSize="large" />
+          </StyledBadge>
+        </IconButton>
       </Box>
-  )
+      <Box sx={{ marginRight: 3 }}>
+        <Avatar src="/broken-image.jpg" />
+      </Box>
+    </Box>
+  );
 
   const NotLogin = (
     <Box>
-        <Button
-          id="signInSignUpButton"
-          sx={{ marginX: 1 }}
-          color="secondary"
-          variant="contained"
-          onClick={handleOpen}
-        >
-          Login/Signup
-        </Button>
-      </Box>
-  )
+      <Button
+        id="signInSignUpButton"
+        sx={{ marginX: 1 }}
+        color="secondary"
+        variant="contained"
+        onClick={handleOpen}
+      >
+        Login/Signup
+      </Button>
+    </Box>
+  );
+
+  const [signUp, setSignUp] = useState(false)
+
+  const handleChange = () => setSignUp(!signUp)
+
 
   return (
     <div>
-      <Box>
-        { loginCheck==="Login" ? Login : NotLogin }
-      </Box>
+      <Box>{loginCheck === "Login" ? Login : NotLogin}</Box>
 
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
-          <IconButton onClick={handleClose} sx={{ position: 'absolute', right: '1.5rem', top: '1.5rem' }}>
+          <IconButton
+            onClick={handleClose}
+            sx={{ position: "absolute", right: "1.5rem", top: "1.5rem" }}
+          >
             <CloseIcon color="primary" />
           </IconButton>
-          <SignIn />
+          {signUp ? <SignUp /> : <SignIn />}
+         
+          <Grid container py={2} px={3} sx={signUp ? {display: 'none'} : {display: 'flex'}}>
+            <Grid item xs>
+              <Button
+                sx={{
+                  textTransform: 'none',
+                }}
+              >
+                Forgot password?
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button
+                onClick={handleChange}
+                sx={{
+                  textTransform: 'none',
+                }}
+              >
+                Don't have an account? Sign Up
+              </Button>
+            </Grid>
+          </Grid>
+
+          <Grid
+            container 
+            justifyContent="flex-end" 
+            pr={2} 
+            sx={
+              signUp ? {display: 'flex'} : {display: 'none'}
+            }
+          >
+              <Grid item>
+                <Button
+                  onClick={handleChange}
+                  sx={{
+                    textTransform: 'none',
+                  }}
+                >
+                  Already have an account? Sign in
+                </Button>
+              </Grid>
+            </Grid>
         </Box>
       </Modal>
     </div>
