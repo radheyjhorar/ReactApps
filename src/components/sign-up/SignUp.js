@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -10,6 +9,9 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import passwordVal from "../formValidation/password";
+import emailVal from "../formValidation/email";
+import userNameVal from "../formValidation/userName";
 
 function SignUp() {
   const [name, setName] = useState("");
@@ -21,6 +23,34 @@ function SignUp() {
   const checkForm = (e) => {
     e.preventDefault();
     console.table(name, email, password, confirmPassword, allowExtraEmails);
+    formValidation();
+  };
+
+  const formValidation = () => {
+    // Validate userName here
+    (userNameVal(name)) ?
+      console.log("Your name is valid") : 
+      console.log("Your name is not valid") ;
+
+    // Validate Email here
+    (emailVal(email)) ?
+      console.log("Your email is valid") :
+      console.log("Your email is not valid") ;
+
+    // Validate password here
+    (passwordVal(password)) ?
+      console.log("Your password is valid") :
+      console.log("Your password is not valid") ;
+
+    // Validate confirm password here
+    (password === confirmPassword) ?
+      console.log("Confirm password matched") :
+      console.log("Confirm password not matched") ;
+
+    // Validate allowExtraEmails checkbox here
+    allowExtraEmails
+      ? console.log("Thanks for checked")
+      : console.log("You do not checked");
   };
 
   return (
@@ -32,8 +62,8 @@ function SignUp() {
           alignItems: "center",
         }}
       >
-        <Box display={'grid'} justifyItems={'center'} mb={4}>
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main", }}>
+        <Box display={"grid"} justifyItems={"center"} mb={4}>
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
 
@@ -99,7 +129,7 @@ function SignUp() {
                     id="allowExtraEmails"
                     color="primary"
                     value={allowExtraEmails}
-                    onChange={(e) => setAllowExtraEmails(e.target.value)}
+                    onChange={(e) => setAllowExtraEmails(e.target.checked)}
                   />
                 }
                 label="I want to receive updates via email."
