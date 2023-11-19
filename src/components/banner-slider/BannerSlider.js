@@ -17,4 +17,4 @@ const BannerSlider = () => {
   )
 }
 
-export default BannerSlider
+export default BannerSlider;

@@ -44,7 +44,7 @@ const Product = (props) => {
           <Paper elevation={3}>
             <Box style={{ height: '200px' }} >
               <img 
-                style={{ width: '-webkit-fill-available',borderRadius: '6px 6px 0 0' ,  height: 'inherit', objectFit: 'cover' }} 
+                style={{ width: '-webkit-fill-available', borderRadius: '6px 6px 0 0', height: 'inherit', objectFit: 'cover' }} 
                 src={props.product.image} 
                 alt={props.product.name} 
               />

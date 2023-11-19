@@ -30,7 +30,7 @@ const ProductSlider = () => {
   ))
 
   return (
-    <div style={{margin: '2rem'}}>
+    <div>
       <Carousel responsive={responsive}>
           {products}
       </Carousel>

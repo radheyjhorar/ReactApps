@@ -90,7 +90,7 @@ const Header = (props) => {
 
   return (
     <header>
-      <div style={{ display: "block", clear: "both", height: height }}>
+      <div style={{ display: "block", clear: "both"}}>
         <AppBar ref={ref}>
           <Toolbar>
             {isMatchMedium ? (

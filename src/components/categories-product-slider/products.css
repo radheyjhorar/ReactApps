@@ -2,5 +2,12 @@
 
 .react-multi-carousel-item {
   width: auto !important;
-  margin-left: 12px;
+}
+
+.react-multi-carousel-track {
+  gap: 10px;
+}
+
+.react-multi-carousel-list {
+  margin: 1rem 14px;
 }

@@ -24,9 +24,9 @@ function SignIn() {
 
   const formValidation = () => {
     // Validate Email here
-    (emailVal(email)) ?
-      console.log(`Your email: ${email} is valid`) :
-      console.log(`Your email: ${email} is not valid`) ;
+    emailVal(email)
+      ? console.log(`Your email: ${email} is valid`)
+      : console.log(`Your email: ${email} is not valid`);
 
     // Validate password here
     passwordVal(password)
@@ -36,6 +36,9 @@ function SignIn() {
     // Validate Remember me checkbox here
     rememberMe ? console.log("Remembered") : console.log("Not remembered");
   };
+
+  let [emailIsValid, setEmailIsValid] = useState(true);
+  let [passwordIsValid, setPasswordIsValid] = useState(true);
 
   return (
     <div>
@@ -66,6 +69,11 @@ function SignIn() {
               name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              onBlur={() =>
+                emailVal(email) ? setEmailIsValid(true) : setEmailIsValid(false)
+              }
+              error={!emailIsValid}
+              helperText={emailIsValid ? false : "Please enter a valid email"}
             />
             <TextField
               margin="normal"
@@ -77,6 +85,15 @@ function SignIn() {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              onBlur={() =>
+                passwordVal(password)
+                  ? setPasswordIsValid(true)
+                  : setPasswordIsValid(false)
+              }
+              error={!passwordIsValid}
+              helperText={
+                passwordIsValid ? false : "Please enter a valid password"
+              }
             />
             <FormControlLabel
               control={

@@ -28,30 +28,35 @@ function SignUp() {
 
   const formValidation = () => {
     // Validate userName here
-    (userNameVal(name)) ?
-      console.log("Your name is valid") : 
-      console.log("Your name is not valid") ;
+    userNameVal(name)
+      ? console.log("Your name is valid")
+      : console.log("Your name is not valid");
 
     // Validate Email here
-    (emailVal(email)) ?
-      console.log("Your email is valid") :
-      console.log("Your email is not valid") ;
+    emailVal(email)
+      ? console.log("Your email is valid")
+      : console.log("Your email is not valid");
 
     // Validate password here
-    (passwordVal(password)) ?
-      console.log("Your password is valid") :
-      console.log("Your password is not valid") ;
+    passwordVal(password)
+      ? console.log("Your password is valid")
+      : console.log("Your password is not valid");
 
     // Validate confirm password here
-    (password === confirmPassword) ?
-      console.log("Confirm password matched") :
-      console.log("Confirm password not matched") ;
+    password === confirmPassword
+      ? console.log("Confirm password matched")
+      : console.log("Confirm password not matched");
 
     // Validate allowExtraEmails checkbox here
     allowExtraEmails
       ? console.log("Thanks for checked")
       : console.log("You do not checked");
   };
+
+  let [nameIsValid, setNameIsValid] = useState(true);
+  let [emailIsValid, setEmailIsValid] = useState(true);
+  let [passwordIsValid, setPasswordIsValid] = useState(true);
+  let [password2IsValid, setPassword2IsValid] = useState(true);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -83,6 +88,13 @@ function SignUp() {
                 label="Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                onBlur={() =>
+                  userNameVal(name)
+                    ? setNameIsValid(true)
+                    : setNameIsValid(false)
+                }
+                error={!nameIsValid}
+                helperText={nameIsValid ? false : "Please enter a valid username"}
               />
             </Grid>
             <Grid item xs={12}>
@@ -94,6 +106,13 @@ function SignUp() {
                 name="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                onBlur={() =>
+                  emailVal(email)
+                    ? setEmailIsValid(true)
+                    : setEmailIsValid(false)
+                }
+                error={!emailIsValid}
+                helperText={emailIsValid ? false : "Please enter a valid email"}
               />
             </Grid>
             <Grid item xs={12}>
@@ -106,6 +125,15 @@ function SignUp() {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                onBlur={() =>
+                  passwordVal(password)
+                    ? setPasswordIsValid(true)
+                    : setPasswordIsValid(false)
+                }
+                error={!passwordIsValid}
+                helperText={
+                  passwordIsValid ? false : "Please enter a valid password"
+                }
               />
             </Grid>
             <Grid item xs={12}>
@@ -118,6 +146,15 @@ function SignUp() {
                 id="confirmPassword"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
+                onBlur={() =>
+                  (password === confirmPassword && !confirmPassword == '')
+                    ? setPassword2IsValid(true)
+                    : setPassword2IsValid(false)
+                }
+                error={!password2IsValid}
+                helperText={
+                  password2IsValid ? false : "Please enter same password"
+                }
               />
             </Grid>
             <Grid item xs={12}>

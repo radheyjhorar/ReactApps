@@ -2,12 +2,9 @@ import React, { BrowserRouter, Routes, Route } from "react";
 import "./App.css";
 import Header from './components/header/Header';
 import Footer from "./components/footer/Footer";
-import Checkout from "./components/check-out/CheckOut";
-import Cart from "./components/cart/Cart";
-import UserProfile from "./components/user-profile/UserProfile";
-import SignUp from "./components/sign-up/SignUp";
-import SignInSignUp from "./components/sign-in-sign-up/SignInSignUp";
-
+import BannerSlider from "./components/banner-slider/BannerSlider";
+import ProductSlider from "./components/categories-product-slider/ProductSlider";
+import Faq from "./components/faq/Faq";
 
 function App() {
   return (
@@ -16,7 +13,9 @@ function App() {
             <Header />
             {/* <Routes> */}
                 {/* <Route/> */}
-                {/* <SignInSignUp /> */}
+                <BannerSlider />
+                <ProductSlider />
+                <Faq />
             {/* </Routes> */}
             <Footer />
     {/* </BrowserRouter> */}
