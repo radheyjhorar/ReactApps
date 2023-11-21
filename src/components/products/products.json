@@ -1,21 +1,19 @@
 [
     {
       "id": 1,
-      "name": "Product 1",
-      "price": 10.99,
-      "description": "Description of product 1"
+      "name": "Keyboard & Mouse Combo",
+      "image": "https://rukminim2.flixcart.com/image/832/832/kzzw5u80/keyboard/multi-device-keyboard/o/2/d/km3322w-km3322w-keyboard-mouse-combo-anti-fade-spill-resistant-original-imagbvyatqteauf2.jpeg?q=70",
+      "color": ["Black"],
+      "price": 1249,
+      "description": "DELL KM3322W, Anti-fade & Spill-resistant Keys Wireless Multi-device Keyboard"
     },
     {
       "id": 2,
-      "name": "Product 2",
-      "price": 19.99,
-      "description": "Description of product 2"
-    },
-    {
-      "id": 3,
-      "name": "Product 3",
-      "price": 14.99,
-      "description": "Description of product 3"
+      "name": "Keyboard & Mouse Combo",
+      "image": "https://rukminim2.flixcart.com/image/832/832/kzzw5u80/keyboard/multi-device-keyboard/o/2/d/km3322w-km3322w-keyboard-mouse-combo-anti-fade-spill-resistant-original-imagbvyatqteauf2.jpeg?q=70",
+      "color": ["Black"],
+      "price": 1249,
+      "description": "DELL KM3322W, Anti-fade & Spill-resistant Keys Wireless Multi-device Keyboard"
     }
   ]
   
