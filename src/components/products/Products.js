@@ -1,19 +1,20 @@
 import React from "react";
-import data from "../products.json";
+import data from "./products.json";
 import { Box, Button, Typography } from "@mui/material";
-import "./Product.css";
+import "./Products.css";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
+import ProductCategories from "./productCategories/ProductCategories";
 
-const Product = () => {
+const Products = () => {
   return (
     <div>
       <Box sx={{ backgroundColor: "#fff" }} m={2}>
         <Box>
           <Typography p={2} variant="h5" fontWeight={"bold"} component={"h4"}>
-            Product Categories Name
+            Product Category Name
           </Typography>
         </Box>
-        <Box display={"flex"}>
+        <Box display={"flex"} px={2} pb={1} overflow={'hidden'}>
           {data.map((e) => {
             return <ProductList key={e.id} {...e} />;
           })}
@@ -23,9 +24,9 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default Products;
 
-export const ProductList = ({ name, image, price, color, description }) => {
+export const ProductList = ({ title, image, price, description }) => {
   return (
     <Box>
       <Box p={1}>
@@ -49,8 +50,10 @@ export const ProductList = ({ name, image, price, color, description }) => {
                   variant="body2"
                   fontWeight={"bold"}
                   color={"#00000090"}
+                  whiteSpace={'nowrap'}
+                  overflow={'hidden'}
                 >
-                  {name}
+                  {title}
                 </Typography>
                 <Box display={"flex"} alignItems={"center"}>
                   <CurrencyRupeeIcon
@@ -77,17 +80,6 @@ export const ProductList = ({ name, image, price, color, description }) => {
           </Box>
         </Box>
       </Box>
-
-      {/* <div>
-        <div>
-          <img src={image} width={'200px'}/>
-        </div>
-        <h3>{name}</h3>
-        <p>{price}</p>
-        <p>{color}</p>
-        <p>{description}</p>
-        <button>Add to Cart</button>
-      </div> */}
     </Box>
   );
 };
