@@ -3,20 +3,40 @@ import data from "./products.json";
 import { Box, Button, Typography } from "@mui/material";
 import "./Products.css";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
-import ProductCategories from "./productCategories/ProductCategories";
+
+const filterData = (dataName) => {
+  return data.filter((x) => x.category === dataName);
+};
+const jeweleries = filterData("jewelery");
+const menClothing = filterData("men's clothing");
+const womenClothing = filterData("women's clothing");
+const electronics = filterData("electronics");
 
 const Products = () => {
   return (
     <div>
-      <Box sx={{ backgroundColor: "#fff" }} m={2}>
+      {byCategory("Jewelery", jeweleries)}
+      {byCategory("Men's Clothing", menClothing)}
+      {byCategory("Women's Clothing", womenClothing)}
+      {byCategory("Electronics", electronics)}
+    </div>
+  );
+};
+export default Products;
+
+
+const byCategory = (proTitle, proCategory) => {
+  return (
+    <div>
+      <Box sx={{ backgroundColor: "#fff" }} m={2} mb={0}>
         <Box>
-          <Typography p={2} variant="h5" fontWeight={"bold"} component={"h4"}>
-            Product Category Name
+          <Typography p={2} variant="h4" fontWeight={"bold"} component={"div"}>
+            {proTitle}
           </Typography>
         </Box>
-        <Box display={"flex"} px={2} pb={1} overflow={'hidden'}>
-          {data.map((e) => {
-            return <ProductList key={e.id} {...e} />;
+        <Box display={"flex"} px={2} pb={1} overflow={"hidden"}>
+          {proCategory.map((e) => {
+            return <ProductList key={e.id} {...e} />
           })}
         </Box>
       </Box>
@@ -24,7 +44,6 @@ const Products = () => {
   );
 };
 
-export default Products;
 
 export const ProductList = ({ title, image, price, description }) => {
   return (
@@ -50,8 +69,8 @@ export const ProductList = ({ title, image, price, description }) => {
                   variant="body2"
                   fontWeight={"bold"}
                   color={"#00000090"}
-                  whiteSpace={'nowrap'}
-                  overflow={'hidden'}
+                  whiteSpace={"nowrap"}
+                  overflow={"hidden"}
                 >
                   {title}
                 </Typography>

@@ -5,6 +5,7 @@ import Footer from "./components/footer/Footer";
 import BannerSlider from "./components/banner-slider/BannerSlider";
 import Faq from "./components/faq/Faq";
 import Products from "./components/products/Products";
+import Cart from "./components/cart/Cart";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
                 <BannerSlider />
                 <Products />
                 <Faq />
+                <Cart />
             {/* </Routes> */}
             <Footer />
     {/* </BrowserRouter> */}
