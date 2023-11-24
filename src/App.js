@@ -3,9 +3,8 @@ import "./App.css";
 import Header from './components/header/Header';
 import Footer from "./components/footer/Footer";
 import BannerSlider from "./components/banner-slider/BannerSlider";
-import Faq from "./components/faq/Faq";
-import Products from "./components/products/Products";
 import Cart from "./components/cart/Cart";
+import ProductCategories from "./components/productCategories/ProductCategories";
 
 function App() {
   return (
@@ -15,8 +14,7 @@ function App() {
             {/* <Routes> */}
                 {/* <Route/> */}
                 <BannerSlider />
-                <Products />
-                <Faq />
+                <ProductCategories />
                 <Cart />
             {/* </Routes> */}
             <Footer />
