@@ -118,7 +118,7 @@ const Cart = () => {
                 borderRadius: 1,
               }}
             >
-              <PriceDetails />
+              <PriceDetails item={cart} />
             </Box>
             <Box mt={2}>
               <Box display={"flex"} alignItems={"center"} py={2}>
