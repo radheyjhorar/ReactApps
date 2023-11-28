@@ -4,6 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import rootReducer from './services/reducers/Index';
+
+const store = createStore(rootReducer);
+
 // import { createTheme } from '@mui/material/styles';
 // const theme = createTheme({
 //   palette: {
@@ -25,7 +31,9 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   // </React.StrictMode>
 );
 

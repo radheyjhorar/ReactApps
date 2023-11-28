@@ -1,13 +1,21 @@
 import React from 'react';
 import './home.css';
+import Header from '../header/Header';
 
-const Home = () => {
+const Home = (props) => {
+  console.log("Home: ", props.cartData);
   return (
     <div style={{ height: '100vh' }}>
+      <Header />
       <h1>Home Component</h1>
       <div className='cart-image'>
-        <img 
-          src='https://cdn.pixabay.com/photo/2017/03/29/04/09/shopping-icon-2184065_640.png' 
+        {
+          props.cartData.length
+            ? <span className='cart-item-len'>{props.cartData.length}</span>
+            : false
+        }
+        <img
+          src='https://cdn.pixabay.com/photo/2017/03/29/04/09/shopping-icon-2184065_640.png'
           alt='cart.png'
         />
       </div>
@@ -28,7 +36,14 @@ const Home = () => {
             </span>
           </div>
           <div className='btn-wrapper item'>
-            <button>Add To Cart+</button>
+            <button
+              onClick={() => props.addToCartHandler({
+                price: 1000,
+                name: 'iPhone',
+              })}
+            >
+              Add To Cart+
+            </button>
           </div>
         </div>
       </div>
