@@ -17,8 +17,6 @@ const PriceDetails = ({ item }) => {
     ? productsTotalPrice + packagingCharge
     : productsTotalPrice + deliveryCharges + packagingCharge;
 
-  console.log(cartTotalPrice);
-
   return (
     <div>
       <Box boxShadow={4}>

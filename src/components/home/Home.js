@@ -3,12 +3,12 @@ import './home.css';
 import Header from '../header/Header';
 
 const Home = (props) => {
-  console.log("Home: ", props.cartData);
+  console.log("Home: ", props);
   return (
     <div style={{ height: '100vh' }}>
-      <Header />
+      {/* <Header props={props}/> */}
       <h1>Home Component</h1>
-      <div className='cart-image'>
+      {/* <div className='cart-image'>
         {
           props.cartData.length
             ? <span className='cart-item-len'>{props.cartData.length}</span>
@@ -18,7 +18,7 @@ const Home = (props) => {
           src='https://cdn.pixabay.com/photo/2017/03/29/04/09/shopping-icon-2184065_640.png'
           alt='cart.png'
         />
-      </div>
+      </div> */}
       <div className='main-container'>
         <div className='cart-wrapper'>
           <div className='image-wrapper item'>
@@ -35,15 +35,27 @@ const Home = (props) => {
               Price: $1000.00
             </span>
           </div>
-          <div className='btn-wrapper item'>
-            <button
-              onClick={() => props.addToCartHandler({
-                price: 1000,
-                name: 'iPhone',
-              })}
-            >
-              Add To Cart+
-            </button>
+          <div className='btn-wrapper'>
+            <div className='add-btn item'>
+              <button
+                onClick={() => props.addToCartHandler({
+                  price: 1000,
+                  name: 'iPhone',
+                })}
+              >
+                Add To Cart+
+              </button>
+            </div>
+            <div className='remove-btn item'>
+              <button
+                onClick={() => props.removeToCartHandler({
+                  price: 1000,
+                  name: 'iPhone',
+                })}
+              >
+                Remove To Cart+
+              </button>
+            </div>
           </div>
         </div>
       </div>

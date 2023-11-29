@@ -3,7 +3,7 @@ import "./Product.css";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import { Box, Typography, Button } from "@mui/material";
 
-const Products = ({ title, image, price, description }) => {
+const Products = ({ title, image, price, description,}) => {
   return (
     <div>
     <Box>

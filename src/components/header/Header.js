@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import './header.css';
 import {
   AppBar,
+  Badge,
   Box,
   Tab,
   Tabs,
@@ -17,6 +18,7 @@ import Navbar from "./Navbar/Navbar";
 import SideDrawer from "../drawer/SideDrawer";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import SignInSignUp from "../sign-in-sign-up/SignInSignUp";
+import cartIcon from '../../assets/images/cart.svg';
 
 const Header = (props) => {
 
@@ -137,6 +139,11 @@ const Header = (props) => {
                       />
                     </Search>
                   </Box>
+                </Box>
+                <Box ml={4} mr={1}>
+                  <Badge badgeContent={props.cartData.length} color="secondary" sx={{cursor: 'pointer'}}>
+                    <img src={cartIcon} alt="cart.svg"/>
+                  </Badge>
                 </Box>
 
                 <Box mx={1}>

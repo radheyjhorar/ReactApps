@@ -13,7 +13,8 @@ const menClothing = filterData("men's clothing");
 const womenClothing = filterData("women's clothing");
 const electronics = filterData("electronics");
 
-const ProductCategories = () => {
+const ProductCategories = (props) => {
+  console.log('Product: ', props)
   return (
     <div>
       {byCategory("Jewelery", jeweleries)}
