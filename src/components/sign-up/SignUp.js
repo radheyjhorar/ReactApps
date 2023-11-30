@@ -147,7 +147,7 @@ function SignUp() {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 onBlur={() =>
-                  (password === confirmPassword && !confirmPassword == '')
+                  (password === confirmPassword && !confirmPassword === '')
                     ? setPassword2IsValid(true)
                     : setPassword2IsValid(false)
                 }
