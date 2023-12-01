@@ -1,20 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './ProductCategories.css';
 import { Box, Typography } from '@mui/material';
-import data from '../products/products.json';
+//import data from '../products/products.json';
+import { useSelector } from 'react-redux';
 import Product from '../products/Product';
 
-const filterData = (dataName) => {
-  return data.filter((x) => x.category === dataName);
+
+const filterData = (dataName, data) => {
+  return data && data.filter((x) => x.category === dataName);
 };
 
-const jeweleries = filterData("jewelery");
-const menClothing = filterData("men's clothing");
-const womenClothing = filterData("women's clothing");
-const electronics = filterData("electronics");
+
+
 
 const ProductCategories = (props) => {
-  console.log('Product: ', props)
+  const selector = useSelector((state) => state);
+  const data = [] && selector.product.data;
+  console.log("Product Cat: ", data)
+
+  // useEffect(() => {
+
+  // }, [])
+
+  const jeweleries = filterData("jewelery", data);
+  const menClothing = filterData("men's clothing", data);
+  const womenClothing = filterData("women's clothing", data);
+  const electronics = filterData("electronics", data);
+
+
   return (
     <div>
       {byCategory("Jewelery", jeweleries)}
@@ -24,8 +37,8 @@ const ProductCategories = (props) => {
     </div>
   );
 };
-
 export default ProductCategories;
+
 
 
 const byCategory = (proTitle, proCategory) => {
@@ -38,7 +51,7 @@ const byCategory = (proTitle, proCategory) => {
           </Typography>
         </Box>
         <Box display={"flex"} px={2} pb={1} overflow={"hidden"}>
-          {proCategory.map((e) => {
+          {proCategory && proCategory.map((e) => {
             return <Product key={e.id} {...e} />
           })}
         </Box>

@@ -3,10 +3,10 @@ import "./Product.css";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import { Box, Typography, Button } from "@mui/material";
 
-const Products = ({ title, image, price, description,}) => {
+const Products = ({ title, image, price, description, }) => {
   return (
-    <div>
-    <Box>
+    <>
+      <Box>
         <Box p={1}>
           <Box width={"216px"}>
             <Box mx={1}>
@@ -63,7 +63,7 @@ const Products = ({ title, image, price, description,}) => {
           </Box>
         </Box>
       </Box>
-    </div>
+    </>
   );
 };
 export default Products;

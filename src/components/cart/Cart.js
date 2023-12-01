@@ -4,8 +4,12 @@ import PriceDetails from "./PriceDetails";
 import GppGoodIcon from "@mui/icons-material/GppGood";
 import DeliveryAddress from "./DeliveryAddress";
 import CartProduct from "./CartProduct";
+import {  } from '../../redux/slices/cartSlice';
+import { useSelector } from "react-redux";
 
 const Cart = () => {
+  const items = useSelector(state => state);
+  console.log("cart: ", items.cart);
   const [cart, setCart] = useState([
     {
       id: 1,
@@ -42,7 +46,6 @@ const Cart = () => {
       quantity: 2,
     },
   ]);
-
   const calculateTotal = () => {
     return cart
       .reduce((total, item) => total + item.price * item.quantity, 0)
@@ -50,7 +53,7 @@ const Cart = () => {
   };
 
   const cartEmpty = false;
-
+  const cartItem = items.cart;
   return (
     <div>
       <Box my={4}>
@@ -64,7 +67,7 @@ const Cart = () => {
                   Your Cart is empty Please add to cart some products
                 </Typography>
               ) : (
-                cart.map((item) => (
+                cartItem.map((item) => (
                   <Box
                     sx={{
                       width: "100%",

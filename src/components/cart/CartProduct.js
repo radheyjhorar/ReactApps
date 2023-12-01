@@ -42,7 +42,7 @@ const CartProduct = ({ item }) => {
                 fontWeight={"400"}
                 noWrap
               >
-                {item.title}
+                {item.name}
               </Typography>
             </Box>
             <Box>
@@ -70,7 +70,8 @@ const CartProduct = ({ item }) => {
                 display={"flex"}
               >
                 <CurrencyRupeeIcon fontSize={"inherit"} />
-                {(item.price * item.quantity).toFixed(2)}
+                {/* {(item.price * item.quantity).toFixed(2)} */}
+                {item.price}
               </Typography>
 
               <Typography
