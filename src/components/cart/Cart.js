@@ -4,12 +4,13 @@ import PriceDetails from "./PriceDetails";
 import GppGoodIcon from "@mui/icons-material/GppGood";
 import DeliveryAddress from "./DeliveryAddress";
 import CartProduct from "./CartProduct";
-import {  } from '../../redux/slices/cartSlice';
+import { } from '../../redux/slices/cartSlice';
 import { useSelector } from "react-redux";
 
 const Cart = () => {
-  const items = useSelector(state => state);
-  console.log("cart: ", items.cart);
+  const items = useSelector((state) => state.cart.cart);
+  console.log("cart: ", items);
+
   const [cart, setCart] = useState([
     {
       id: 1,
@@ -46,6 +47,7 @@ const Cart = () => {
       quantity: 2,
     },
   ]);
+
   const calculateTotal = () => {
     return cart
       .reduce((total, item) => total + item.price * item.quantity, 0)
@@ -53,7 +55,8 @@ const Cart = () => {
   };
 
   const cartEmpty = false;
-  const cartItem = items.cart;
+  const cartItem = items;
+
   return (
     <div>
       <Box my={4}>
@@ -67,7 +70,7 @@ const Cart = () => {
                   Your Cart is empty Please add to cart some products
                 </Typography>
               ) : (
-                cartItem.map((item) => (
+                items?.map((item) => (
                   <Box
                     sx={{
                       width: "100%",
@@ -80,7 +83,16 @@ const Cart = () => {
                       my: 1.5,
                     }}
                   >
-                    <CartProduct item={item} />
+                    <CartProduct 
+                      key={item.id}
+                      id={item.id}
+                      image={item.image}
+                      title={item.title}
+                      price={item.price}
+                      quantity={item.quantity}
+
+                      item={item} 
+                    />
                   </Box>
                 ))
               )}
@@ -154,7 +166,7 @@ const Cart = () => {
           </tr>
         </thead>
         <tbody>
-          {cart.map((item) => (
+          {items?.map((item) => (
             <tr key={item.id}>
               <td>{item.title}</td>
               <td>${item.price.toFixed(2)}</td>

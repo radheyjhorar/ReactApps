@@ -1,26 +1,23 @@
 import React, { useEffect } from 'react';
 import './ProductCategories.css';
 import { Box, Typography } from '@mui/material';
-//import data from '../products/products.json';
-import { useSelector } from 'react-redux';
+// import data from '../products/products.json';
+import { useSelector, useDispatch } from 'react-redux';
 import Product from '../products/Product';
-
+import { fetchProducts } from "../../redux/slices/productSlice";
 
 const filterData = (dataName, data) => {
   return data && data.filter((x) => x.category === dataName);
 };
 
-
-
-
 const ProductCategories = (props) => {
   const selector = useSelector((state) => state);
-  const data = [] && selector.product.data;
-  console.log("Product Cat: ", data)
+  const data = selector.product.data;
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-
-  // }, [])
+  useEffect(() => {
+    dispatch(fetchProducts())
+  }, [])
 
   const jeweleries = filterData("jewelery", data);
   const menClothing = filterData("men's clothing", data);

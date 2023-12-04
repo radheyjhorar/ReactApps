@@ -12,8 +12,14 @@ import ErrorIcon from "@mui/icons-material/Error";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import DeliveryTime from "./DeliveryTime";
+import { incrementQuantity, decrementQuantity, removeItem } from '../../redux/slices/cartSlice'
+import { useDispatch } from 'react-redux'
 
-const CartProduct = ({ item }) => {
+const CartProduct = ({ id, image, title, price, quantity=0 }) => {
+
+  const dispatch = useDispatch();
+  console.log("Dispatch:", incrementQuantity)
+
   return (
     <Box width={'-webkit-fill-available'}>
       <Grid container>
@@ -28,8 +34,8 @@ const CartProduct = ({ item }) => {
               width={"100%"}
               height={"100%"}
               style={{ objectFit: "contain" }}
-              src={item.image}
-              alt={item.title}
+              src={image}
+              alt='item'
             />
           </Box>
         </Grid>
@@ -42,7 +48,7 @@ const CartProduct = ({ item }) => {
                 fontWeight={"400"}
                 noWrap
               >
-                {item.name}
+                {title}
               </Typography>
             </Box>
             <Box>
@@ -52,16 +58,6 @@ const CartProduct = ({ item }) => {
             </Box>
 
             <Box display={"flex"} alignItems={"center"} pt={2}>
-              {/* Old price if we have */}
-              {/* <Typography
-                  pr={1}
-                  variant="subtitle"
-                  component={"span"}
-                  color={"#888"}
-                >
-                  <del>$1,100</del>
-                </Typography> */}
-
               <Typography
                 pr={2}
                 variant="h6"
@@ -71,7 +67,7 @@ const CartProduct = ({ item }) => {
               >
                 <CurrencyRupeeIcon fontSize={"inherit"} />
                 {/* {(item.price * item.quantity).toFixed(2)} */}
-                {item.price}
+                {price}
               </Typography>
 
               <Typography
@@ -104,7 +100,7 @@ const CartProduct = ({ item }) => {
       <Box display={"flex"}>
         <Box p={1} display={"flex"}>
           <Box>
-            <IconButton onClick={() => item.quantity = item.quantity - 1}>
+            <IconButton onClick={() => dispatch(decrementQuantity(id))}>
               <RemoveIcon />
             </IconButton>
           </Box>
@@ -112,7 +108,7 @@ const CartProduct = ({ item }) => {
           <Box mx={1} alignItems={"center"} display={"flex"}>
             <TextField
               disabled
-              value={item.quantity}
+              value={quantity}
               size="small"
               sx={{ width: "3rem" }}
               inputProps={{
@@ -125,7 +121,7 @@ const CartProduct = ({ item }) => {
           </Box>
 
           <Box>
-            <IconButton onClick={() => item.quantity = item.quantity + 1}>
+            <IconButton onClick={() => dispatch(incrementQuantity(id))}>
               <AddIcon />
             </IconButton>
           </Box>
@@ -138,7 +134,11 @@ const CartProduct = ({ item }) => {
         </Box>
 
         <Box display={"flex"} alignItems={"center"} ml={1}>
-          <Button size="large" sx={{ fontSize: "1.2rem" }}>
+          <Button 
+            size="large" 
+            sx={{ fontSize: "1.2rem" }}
+            onClick={() => dispatch(removeItem(id))}
+          >
             Remove
           </Button>
         </Box>

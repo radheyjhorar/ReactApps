@@ -2,8 +2,11 @@ import React from "react";
 import "./Product.css";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import { Box, Typography, Button } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/slices/cartSlice";
 
-const Products = ({ title, image, price, description, }) => {
+const Products = ({ id, title, image, price, description, }) => {
+  const dispatch = useDispatch();
   return (
     <>
       <Box>
@@ -55,6 +58,11 @@ const Products = ({ title, image, price, description, }) => {
                   sx={{ borderRadius: "0px 0px 5px 5px" }}
                   fullWidth
                   variant="contained"
+                  onClick={() => 
+                    dispatch(addToCart({
+                      id, title, image, price
+                    }))
+                  }
                 >
                   Add to cart+
                 </Button>

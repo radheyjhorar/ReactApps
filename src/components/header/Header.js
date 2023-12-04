@@ -19,8 +19,20 @@ import SideDrawer from "../drawer/SideDrawer";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import SignInSignUp from "../sign-in-sign-up/SignInSignUp";
 import cartIcon from '../../assets/images/cart.svg';
+import { useSelector } from 'react-redux';
 
 const Header = (props) => {
+
+  const cart = useSelector((state) => state.cart.cart);
+  console.log("Header", cart);
+
+  const getTotalQuantity = () => {
+    let total = 0
+    cart.forEach(item => {
+      total += item.quantity
+    })
+    return total
+  }
 
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
@@ -92,7 +104,7 @@ const Header = (props) => {
 
   return (
     <header>
-      <div style={{ display: "block", clear: "both"}}>
+      <div style={{ display: "block", clear: "both" }}>
         <AppBar ref={ref}>
           <Toolbar>
             {isMatchMedium ? (
@@ -141,19 +153,19 @@ const Header = (props) => {
                   </Box>
                 </Box>
                 <Box ml={4} mr={1}>
-                  <Badge badgeContent={props.cartData.length} color="secondary" sx={{cursor: 'pointer'}}>
-                    <img src={cartIcon} alt="cart.svg"/>
+                  <Badge badgeContent={getTotalQuantity() || 0} color="secondary" sx={{ cursor: 'pointer' }}>
+                    <img src={cartIcon} alt="cart.svg" />
                   </Badge>
                 </Box>
 
                 <Box mx={1}>
-                <SignInSignUp/>
-              </Box>
+                  <SignInSignUp />
+                </Box>
               </>
             )}
           </Toolbar>
         </AppBar>
-        <Navbar headerHeight={height}/>
+        <Navbar headerHeight={height} />
       </div>
     </header>
   );
