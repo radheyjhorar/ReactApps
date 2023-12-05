@@ -18,7 +18,6 @@ import { useDispatch } from 'react-redux'
 const CartProduct = ({ id, image, title, price, quantity=0 }) => {
 
   const dispatch = useDispatch();
-  console.log("Dispatch:", incrementQuantity)
 
   return (
     <Box width={'-webkit-fill-available'}>

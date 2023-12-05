@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Typography, Box, Divider } from "@mui/material";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 
@@ -9,8 +9,8 @@ const PriceDetails = ({ item }) => {
   let prices = item.map(({ price, quantity }) => price.toFixed(2) * quantity);
   prices.forEach((e) => (productsTotalPrice += e));
 
-  const deliveryCharges = 60;
-  const packagingCharge = 20;
+  const deliveryCharges = productsTotalPrice ? 60 : 0;
+  const packagingCharge = productsTotalPrice ? 20 : 0;
   const deliveryChargesApplyOrNot = productsTotalPrice >= 200 ? true : false;
 
   const cartTotalPrice = deliveryChargesApplyOrNot
@@ -54,7 +54,10 @@ const PriceDetails = ({ item }) => {
                   </Typography>
                 </Box>
               ) : (
-                deliveryCharges
+                <Box display={"flex"} alignItems={'center'}>
+                  <CurrencyRupeeIcon fontSize="inherit"/>
+                  {deliveryCharges}
+                </Box>
               )}
             </Typography>
           </Box>
