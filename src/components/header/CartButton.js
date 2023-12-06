@@ -7,11 +7,11 @@ const CartButton = () => {
 
   const cart = useSelector((state) => state.cart.cart);
   const getTotalQuantity = () => {
-    let total = 0
+    let total = 0;
     cart.forEach(item => {
       total += item.quantity
-    })
-    return total
+    });
+    return total;
   }
 
   return (

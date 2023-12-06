@@ -3,8 +3,6 @@ import './header.css';
 import {
   AppBar,
   Box,
-  Tab,
-  Tabs,
   Toolbar,
   Typography,
   useMediaQuery,
@@ -16,14 +14,36 @@ import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import SignInSignUp from "../sign-in-sign-up/SignInSignUp";
 import SearchWrapper from "./SearchWrapper";
 import CartButton from "./CartButton";
+import PageTabs from "./PageTabs";
+import Cart from "../cart/Cart";
+import { Link } from 'react-router-dom';
 
 const Header = () => {
 
-  const [value, setValue] = useState();
   const theme = useTheme();
   const isMatchMedium = useMediaQuery(theme.breakpoints.down("md"));
-  const PAGES = ["Products", "Services", "ContactUS", "About Us"];
-
+  const PAGES = [
+    {
+      id: 1,
+      name: "Home",
+      path: "/",
+    },
+    {
+      id: 2,
+      name: "About",
+      path: "/about",
+    },
+    {
+      id: 3,
+      name: "Service",
+      path: "/service",
+    },
+    {
+      id: 4,
+      name: "Policy",
+      path: "/policy",
+    }
+  ];
 
   const [height, setHeight] = useState(0);
   const ref = useRef(null);
@@ -45,7 +65,7 @@ const Header = () => {
                   </Typography>
                 </Box>
                 <Box marginLeft={"auto"}>
-                  <SideDrawer pages = {PAGES}/>
+                  {/* <SideDrawer pages={PAGES} /> */}
                 </Box>
               </>
             ) : (
@@ -57,23 +77,17 @@ const Header = () => {
                   </Typography>
                 </Box>
                 <Box sx={{ marginX: "auto" }}>
-                  <Tabs
-                    value={value}
-                    onChange={(e, value) => setValue(value)}
-                    textColor="#fff"
-                    TabIndicatorProps={{ style: { background: "white" } }}
-                  >
-                    {PAGES.map((page, index) => (
-                      <Tab label={page} key={index} />
-                    ))}
-                  </Tabs>
-                  
+                  <PageTabs page={PAGES}/>
                 </Box>
+
                 <Box sx={{ width: "10%" }}>
-                    <SearchWrapper />
+                  <SearchWrapper />
                 </Box>
+
                 <Box ml={4} mr={1}>
-                  <CartButton />
+                  <Link to="cart" >
+                    <CartButton />
+                  </Link>
                 </Box>
 
                 <Box mx={1}>

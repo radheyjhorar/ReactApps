@@ -5,6 +5,7 @@ import GppGoodIcon from "@mui/icons-material/GppGood";
 import DeliveryAddress from "./DeliveryAddress";
 import CartProduct from "./CartProduct";
 import { useSelector } from "react-redux";
+import EmptyCart from "./EmptyCart";
 
 const Cart = () => {
 
@@ -20,9 +21,9 @@ const Cart = () => {
               <DeliveryAddress />
 
               {cartEmpty ? (
-                <Typography p={2} my={1} sx={{ backgroundColor: "white" }}>
-                  Your Cart is empty Please add to cart some products
-                </Typography>
+                <>
+                {<EmptyCart />}
+                </>
               ) : (
                 items?.map((item) => (
                   <Box

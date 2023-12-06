@@ -1,5 +1,7 @@
 footer {
   bottom: 0;
+  position: relative;
   width: -webkit-fill-available;
-  margin-top: 5rem;
+  margin-top: 4%;
 }
+

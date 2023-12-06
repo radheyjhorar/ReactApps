@@ -1,0 +1,20 @@
+
+#error-page {
+  display: flex;
+  justify-content: center;
+  margin-block: 4%;
+}
+
+#error-page div {
+  padding: 8rem 4rem;
+  background-color: #ecfcff;
+}
+
+.error-name {
+  color: orangered;
+  font-size: larger;
+}
+
+.error-status {
+  color: orangered;
+}

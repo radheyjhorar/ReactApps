@@ -1,27 +1,46 @@
-import React, { BrowserRouter, Routes, Route } from "react";
 import "./App.css";
-import Header from "./containers/HeaderContainer";
-import Home from "./containers/HomeContainer";
+import React from "react";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+import Home from "./pages/HomePage/Home";
 import Cart from "./components/cart/Cart";
 import ProductCategories from "./components/productCategories/ProductCategories";
-import { useDispatch, useSelector } from "react-redux";
-import { Button } from "@mui/material";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
+import Layout from "./Layout";
 
 function App() {
+
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <Layout />,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          path: '/',
+          element: <Home />
+        },
+        {
+          path: "cart",
+          element: <Cart />,
+        },
+        {
+          path: "products",
+          element: <ProductCategories />,
+        },
+      ]
+    },
+  ])
+
   return (
-    <div className="App">
-      {/* <BrowserRouter> */}
-      <Header />
-      {/* <Routes> */}
-      {/* <Route/> */}
-      {/* <Home /> */}
-      <ProductCategories />
-      <Cart />
-      {/* </Routes> */}
-      {/* <Footer /> */}
-      {/* </BrowserRouter> */}
-      {/* <ToDo /> */}
-    </div>
+    <>
+      <RouterProvider router={router} /> 
+    </>
   );
 }
 
